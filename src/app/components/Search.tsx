@@ -65,15 +65,21 @@ const Search = () => {
 					}}
 				/>
 			</div>
-			{showDropDown && searchValue && (
-				<div className={styles.dropDown}>
-					{filteredData.map((item, index) => (
-						<div key={index} className={styles.dropDownItem}>
-							{item.ticker} | {item.name}
-						</div>
-					))}
-				</div>
-			)}
+			{showDropDown &&
+				searchValue &&
+				(filteredData.length == 0 ? (
+					<div className={styles.dropDown}>
+						<div className={styles.dropDownItem}>검색 결과가 없습니다.</div>
+					</div>
+				) : (
+					<div className={styles.dropDown}>
+						{filteredData.map((item, index) => (
+							<div key={index} className={styles.dropDownItem}>
+								{item.ticker} | {item.name}
+							</div>
+						))}
+					</div>
+				))}
 		</div>
 	);
 };
